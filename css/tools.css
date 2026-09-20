@@ -1,0 +1,236 @@
+/* ============================================================
+   TKJ Toolkit — tools.css
+   Tool pages, results, directory, tool-specific widgets
+   ============================================================ */
+
+.tool-page { padding: 2.25rem 0 3rem; }
+.tool-container { max-width: 860px; }
+
+.tool-header { margin-bottom: 1.75rem; }
+.tool-header .tool-card-icon { width: 48px; height: 48px; font-size: 1.25rem; }
+.tool-header h1 { font-size: 1.85rem; margin: 0.85rem 0 0.35rem; }
+.tool-header p { color: var(--muted); margin: 0; max-width: 560px; }
+
+.tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.tool-form { margin: 0; }
+
+/* ---------- Results ---------- */
+.tool-result { margin-bottom: 1.5rem; }
+.tool-result > h2 { font-size: 1.1rem; margin-bottom: 0.9rem; }
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+}
+
+.result-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-width: 0;
+}
+.result-card .result-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+}
+.result-card .result-value {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    word-break: break-all;
+}
+.result-card .copy-btn {
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0.35rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: color 160ms ease, background 160ms ease;
+}
+.result-card .copy-btn:hover { color: var(--primary); background: var(--primary-soft); }
+
+.result-wide { grid-column: 1 / -1; }
+
+.output-block {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    max-height: 320px;
+    overflow: auto;
+}
+
+/* ---------- About / related ---------- */
+.tool-about {
+    border-top: 1px solid var(--border);
+    padding-top: 1.75rem;
+    margin-top: 0.5rem;
+}
+.tool-about h2 { font-size: 1.15rem; }
+.tool-about h3 { font-size: 0.95rem; margin-top: 1.25rem; }
+.tool-about p, .tool-about li { color: var(--muted); font-size: 0.925rem; }
+.tool-about ul { padding-left: 1.25rem; }
+
+.related-tools { margin-top: 2.5rem; }
+.related-tools h2 { font-size: 1.15rem; margin-bottom: 1rem; }
+.related-tools .card-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* ---------- Tool directory ---------- */
+.directory-controls { margin-bottom: 2rem; }
+.directory-search { position: relative; margin-bottom: 1rem; max-width: 460px; }
+.directory-search i {
+    position: absolute;
+    left: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+.directory-search input { padding-left: 2.4rem; }
+
+.directory-category { margin-bottom: 2.25rem; }
+.directory-category > h2 {
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+.directory-category > h2 i { color: var(--primary); font-size: 0.95rem; }
+.directory-category > h2 .count { color: var(--muted); font-weight: 500; font-size: 0.85rem; }
+.directory-category .card-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* ---------- Password strength ---------- */
+.strength-meter { margin-top: 0.75rem; }
+.strength-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: var(--border);
+    overflow: hidden;
+}
+.strength-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: var(--danger);
+    transition: width 250ms ease, background 250ms ease;
+}
+.strength-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.35rem; }
+.strength-label strong { color: var(--text); }
+
+/* ---------- QR ---------- */
+.qr-output {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+}
+.qr-box {
+    background: #ffffff;
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    line-height: 0;
+}
+.qr-box img, .qr-box canvas { display: block; }
+
+/* ---------- Color preview ---------- */
+.color-preview {
+    height: 90px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    background: var(--primary);
+    transition: background 200ms ease;
+}
+
+/* ---------- MAC output ---------- */
+.mac-output {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 1.35rem;
+    letter-spacing: 0.06em;
+    padding: 1.25rem;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    word-break: break-all;
+}
+
+/* ---------- UA / KV list ---------- */
+.kv-list { display: grid; gap: 0.6rem; }
+.kv-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+.kv-row:last-child { border-bottom: none; }
+.kv-row dt { color: var(--muted); font-weight: 600; margin: 0; }
+.kv-row dd { margin: 0; word-break: break-word; }
+.kv-row dd.mono { font-family: var(--font-mono); font-size: 0.85rem; }
+
+/* ---------- JWT ---------- */
+.jwt-section { margin-bottom: 1.25rem; }
+.jwt-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+}
+.jwt-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.jwt-dot-header { background: var(--primary); }
+.jwt-dot-payload { background: var(--success); }
+.jwt-dot-signature { background: var(--warning); }
+
+/* ---------- 404 ---------- */
+.error-page {
+    text-align: center;
+    padding: 6rem 0;
+}
+.error-page .error-code {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--primary);
+    margin: 0 0 0.5rem;
+    line-height: 1;
+}
+.error-page h1 { font-size: 1.5rem; }
+.error-page p { color: var(--muted); margin-bottom: 1.75rem; }
+.error-page .btn-row { justify-content: center; }

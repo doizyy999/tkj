@@ -1,0 +1,57 @@
+/* ============================================================
+   TKJ Toolkit — responsive.css
+   Breakpoints: 1024 / 900 / 640
+   ============================================================ */
+
+@media (max-width: 1024px) {
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .directory-category .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-search { display: none; }
+    .menu-toggle { display: inline-flex; }
+
+    .hero { padding: 3rem 0 2.5rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+    .hero h1 { font-size: 2.25rem; }
+    .hero-visual { max-width: 480px; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 640px) {
+    h1 { font-size: 1.85rem; }
+    .section { padding: 2.5rem 0; }
+
+    .card-grid,
+    .directory-category .card-grid,
+    .related-tools .card-grid { grid-template-columns: 1fr; }
+
+    .result-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+
+    .tool-card { padding: 1.15rem; }
+    .tool-header h1 { font-size: 1.5rem; }
+
+    .mini-card + .mini-card,
+    .mini-card:first-child { margin-left: 0; margin-right: 0; }
+
+    .footer-grid { grid-template-columns: 1fr; }
+
+    .toast-container {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: none;
+    }
+
+    .kv-row { grid-template-columns: 1fr; gap: 0.15rem; }
+
+    .btn-row .btn { flex: 1 1 auto; }
+
+    .error-page { padding: 4rem 0; }
+    .error-page .error-code { font-size: 3.75rem; }
+}

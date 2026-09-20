@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator — TKJ Toolkit</title>
+    <meta name="description" content="Create scannable QR codes from text or URLs and download them as PNG.">
+    <link rel="canonical" href="https://example.com/tools/qr-generator.html">
+    <meta property="og:title" content="QR Code Generator — TKJ Toolkit">
+    <meta property="og:description" content="Create scannable QR codes from text or URLs and download them as PNG.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/tools/qr-generator.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/tools-data.js" defer></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/toast.js" defer></script>
+    <script src="../js/clipboard.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/tools/qr-generator.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html">Tools</a>
+                <a href="../index.html#categories">Categories</a>
+                <a href="../pages/about.html">About</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="nav-search-input" type="search" placeholder="Search tools..." aria-label="Search tools" data-tool-path="" autocomplete="off">
+                </div>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+                <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+            <a href="index.html"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</a>
+            <a href="../index.html#categories"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Categories</a>
+            <a href="../pages/about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <button class="theme-toggle" type="button"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span data-theme-label>System theme</span></button>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container tool-container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <a href="index.html">Tools</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">QR Code Generator</span>
+            </nav>
+
+            <div class="tool-header">
+                <span class="tool-card-icon"><i class="fa-solid fa-qrcode" aria-hidden="true"></i></span>
+                <h1>QR Code Generator</h1>
+                <p>Create scannable QR codes from text or URLs and download them as PNG.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="form-group">
+                    <label for="qr-input">Text / URL</label>
+                    <input id="qr-input" type="text" placeholder="https://example.com" autocomplete="off">
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" type="button" id="generate-btn"><i class="fa-solid fa-qrcode" aria-hidden="true"></i> Generate</button>
+                    <button class="btn btn-ghost" type="button" id="reset-btn"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset</button>
+                </div>
+                <div id="qr-error"></div>
+            </div>
+            <div class="tool-result" id="qr-result" style="display:none;">
+                <h2>Result</h2>
+                <div class="qr-output">
+                    <div class="qr-box" id="qr-box"></div>
+                    <button class="btn btn-secondary" type="button" id="download-btn"><i class="fa-solid fa-download" aria-hidden="true"></i> Download PNG</button>
+                </div>
+            </div>
+            <section class="tool-about">
+                <h2>About this tool</h2>
+                <p>Turn any text or link into a scannable QR code.</p>
+                <h3>How it works</h3>
+                <p>The QR code is rendered locally using a lightweight open-source QR library loaded from the cdnjs CDN. Your content is encoded on your device and the PNG export is produced from the rendered canvas.</p>
+            </section>
+
+
+            <section id="related-tools" class="related-tools" data-slug="qr-generator">
+                <h2>Related Tools</h2>
+                <div class="card-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+                <p>Essential tools for networks, developers, and IT professionals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tools</h3>
+                <a href="index.html?category=Networking">Networking</a>
+                <a href="index.html?category=Developer">Developer</a>
+                <a href="index.html?category=Generators">Generators</a>
+                <a href="index.html?category=Utilities">Utilities</a>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <a href="../pages/about.html">About</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TKJ Toolkit</p>
+        </div>
+    </footer>
+</body>
+</html>

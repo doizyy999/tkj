@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — TKJ Toolkit</title>
+    <meta name="description" content="Terms of use for TKJ Toolkit.">
+    <link rel="canonical" href="https://example.com/pages/terms.html">
+    <meta property="og:title" content="Terms of Use — TKJ Toolkit">
+    <meta property="og:description" content="Terms of use for TKJ Toolkit.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/pages/terms.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/tools-data.js" defer></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/toast.js" defer></script>
+    <script src="../js/clipboard.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/app.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="../tools/index.html">Tools</a>
+                <a href="../index.html#categories">Categories</a>
+                <a href="about.html">About</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="nav-search-input" type="search" placeholder="Search tools..." aria-label="Search tools" data-tool-path="../tools/" autocomplete="off">
+                </div>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+                <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+            <a href="../tools/index.html"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</a>
+            <a href="../index.html#categories"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Categories</a>
+            <a href="about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <button class="theme-toggle" type="button"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span data-theme-label>System theme</span></button>
+        </nav>
+    </header>
+
+    <main class="container prose">
+        <h1>Terms of Use</h1>
+        <p>By using TKJ Toolkit you agree to these simple terms.</p>
+
+        <h2>1. The service</h2>
+        <p>TKJ Toolkit provides browser-based utilities for networking, development and IT work. The tools are provided free of charge for personal and professional use.</p>
+
+        <h2>2. No warranty</h2>
+        <p>The tools are provided "as is" without any warranty of accuracy, availability or fitness for a particular purpose. While calculations are implemented carefully, you are responsible for verifying critical results — for example network configurations used in production environments.</p>
+
+        <h2>3. Acceptable use</h2>
+        <p>You agree not to misuse the tools: do not use them to attack, probe or disrupt systems you do not own or have permission to test, and do not attempt to abuse any third-party public APIs referenced by the tools.</p>
+
+        <h2>4. Third-party services</h2>
+        <p>Some tools rely on third-party public services (for example, a public DNS-over-HTTPS resolver and CDN-hosted libraries). We are not responsible for the availability or behavior of those services.</p>
+
+        <h2>5. Limitation of liability</h2>
+        <p>To the maximum extent permitted by law, TKJ Toolkit and its authors are not liable for any direct or indirect damages arising from the use of the tools.</p>
+
+        <h2>6. Changes</h2>
+        <p>These terms may be updated from time to time. Continued use of the site after changes means you accept the updated terms.</p>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+                <p>Essential tools for networks, developers, and IT professionals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tools</h3>
+                <a href="../tools/index.html?category=Networking">Networking</a>
+                <a href="../tools/index.html?category=Developer">Developer</a>
+                <a href="../tools/index.html?category=Generators">Generators</a>
+                <a href="../tools/index.html?category=Utilities">Utilities</a>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TKJ Toolkit</p>
+        </div>
+    </footer>
+</body>
+</html>

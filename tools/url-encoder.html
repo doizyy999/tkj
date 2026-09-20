@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encoder / Decoder — TKJ Toolkit</title>
+    <meta name="description" content="Percent-encode and decode URL components safely with proper error handling.">
+    <link rel="canonical" href="https://example.com/tools/url-encoder.html">
+    <meta property="og:title" content="URL Encoder / Decoder — TKJ Toolkit">
+    <meta property="og:description" content="Percent-encode and decode URL components safely with proper error handling.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/tools/url-encoder.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/tools-data.js" defer></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/toast.js" defer></script>
+    <script src="../js/clipboard.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/tools/url-encoder.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html">Tools</a>
+                <a href="../index.html#categories">Categories</a>
+                <a href="../pages/about.html">About</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="nav-search-input" type="search" placeholder="Search tools..." aria-label="Search tools" data-tool-path="" autocomplete="off">
+                </div>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+                <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+            <a href="index.html"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</a>
+            <a href="../index.html#categories"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Categories</a>
+            <a href="../pages/about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <button class="theme-toggle" type="button"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span data-theme-label>System theme</span></button>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container tool-container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <a href="index.html">Tools</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">URL Encoder / Decoder</span>
+            </nav>
+
+            <div class="tool-header">
+                <span class="tool-card-icon"><i class="fa-solid fa-link" aria-hidden="true"></i></span>
+                <h1>URL Encoder / Decoder</h1>
+                <p>Percent-encode and decode URL components safely with proper error handling.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="tabs" role="tablist" aria-label="Mode">
+                    <button class="tab" role="tab" data-mode="encode" aria-selected="true">Encode</button>
+                    <button class="tab" role="tab" data-mode="decode" aria-selected="false">Decode</button>
+                </div>
+                <div class="form-group">
+                    <label for="url-input">Input</label>
+                    <textarea id="url-input" placeholder="https://example.com/?name=John Doe" spellcheck="false"></textarea>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" type="button" id="convert-btn"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Convert</button>
+                    <button class="btn btn-secondary" type="button" id="copy-btn"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+                    <button class="btn btn-ghost" type="button" id="clear-btn"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Clear</button>
+                </div>
+                <div id="url-error"></div>
+                <div class="form-group" style="margin-top:1rem;">
+                    <label for="url-output">Output</label>
+                    <textarea id="url-output" readonly spellcheck="false"></textarea>
+                </div>
+            </div>
+            <section class="tool-about">
+                <h2>About this tool</h2>
+                <p>Encode special characters for safe use in URLs, and decode percent-encoded strings.</p>
+                <h3>How it works</h3>
+                <p>Encoding uses encodeURIComponent, which escapes every reserved character. Decoding uses decodeURIComponent and catches malformed percent sequences, showing a clear error instead of breaking.</p>
+            </section>
+
+
+            <section id="related-tools" class="related-tools" data-slug="url-encoder">
+                <h2>Related Tools</h2>
+                <div class="card-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+                <p>Essential tools for networks, developers, and IT professionals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tools</h3>
+                <a href="index.html?category=Networking">Networking</a>
+                <a href="index.html?category=Developer">Developer</a>
+                <a href="index.html?category=Generators">Generators</a>
+                <a href="index.html?category=Utilities">Utilities</a>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <a href="../pages/about.html">About</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TKJ Toolkit</p>
+        </div>
+    </footer>
+</body>
+</html>

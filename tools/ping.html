@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Connectivity Check — TKJ Toolkit</title>
+    <meta name="description" content="Check whether a host is reachable over HTTP(S) and measure response time.">
+    <link rel="canonical" href="https://example.com/tools/ping.html">
+    <meta property="og:title" content="HTTP Connectivity Check — TKJ Toolkit">
+    <meta property="og:description" content="Check whether a host is reachable over HTTP(S) and measure response time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/tools/ping.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/tools-data.js" defer></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/toast.js" defer></script>
+    <script src="../js/clipboard.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/tools/ping.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html">Tools</a>
+                <a href="../index.html#categories">Categories</a>
+                <a href="../pages/about.html">About</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="nav-search-input" type="search" placeholder="Search tools..." aria-label="Search tools" data-tool-path="" autocomplete="off">
+                </div>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+                <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+            <a href="index.html"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</a>
+            <a href="../index.html#categories"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Categories</a>
+            <a href="../pages/about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <button class="theme-toggle" type="button"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span data-theme-label>System theme</span></button>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container tool-container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <a href="index.html">Tools</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">HTTP Connectivity Check</span>
+            </nav>
+
+            <div class="tool-header">
+                <span class="tool-card-icon"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i></span>
+                <h1>HTTP Connectivity Check</h1>
+                <p>Check whether a host is reachable over HTTP(S) and measure response time.</p>
+            </div>
+
+            <div class="notice notice-info">
+                <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                <div>This tool checks HTTP connectivity. It does not perform ICMP ping — browsers are not allowed to send ICMP packets.</div>
+            </div>
+            <div class="tool-card">
+                <div class="form-group">
+                    <label for="ping-target">Target</label>
+                    <input id="ping-target" class="mono" type="text" placeholder="https://example.com" autocomplete="off" spellcheck="false">
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-primary" type="button" id="check-btn"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Check</button>
+                </div>
+                <div id="ping-error"></div>
+            </div>
+            <div class="tool-result" id="results" style="display:none;">
+                <h2>Results</h2>
+                <div id="result-body"></div>
+            </div>
+            <section class="tool-about">
+                <h2>About this tool</h2>
+                <p>A browser-safe alternative to ping.</p>
+                <h3>How it works</h3>
+                <p>The tool issues a real HTTP request in no-cors mode and measures how long it takes to resolve. A completed request means the host accepted an HTTP(S) connection; the exact status code is opaque to the browser, and we say so rather than invent one.</p>
+            </section>
+
+
+            <section id="related-tools" class="related-tools" data-slug="ping">
+                <h2>Related Tools</h2>
+                <div class="card-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+                <p>Essential tools for networks, developers, and IT professionals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tools</h3>
+                <a href="index.html?category=Networking">Networking</a>
+                <a href="index.html?category=Developer">Developer</a>
+                <a href="index.html?category=Generators">Generators</a>
+                <a href="index.html?category=Utilities">Utilities</a>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <a href="../pages/about.html">About</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TKJ Toolkit</p>
+        </div>
+    </footer>
+</body>
+</html>

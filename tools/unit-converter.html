@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter — TKJ Toolkit</title>
+    <meta name="description" content="Convert length, weight, temperature, data, time, speed, area and volume units.">
+    <link rel="canonical" href="https://example.com/tools/unit-converter.html">
+    <meta property="og:title" content="Unit Converter — TKJ Toolkit">
+    <meta property="og:description" content="Convert length, weight, temperature, data, time, speed, area and volume units.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/tools/unit-converter.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="../js/theme.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/tools.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="../js/tools-data.js" defer></script>
+    <script src="../js/utils.js" defer></script>
+    <script src="../js/toast.js" defer></script>
+    <script src="../js/clipboard.js" defer></script>
+    <script src="../js/search.js" defer></script>
+    <script src="../js/app.js" defer></script>
+    <script src="../js/tools/unit-converter.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-inner">
+            <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+            <nav class="nav-links" aria-label="Primary">
+                <a href="index.html">Tools</a>
+                <a href="../index.html#categories">Categories</a>
+                <a href="../pages/about.html">About</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input id="nav-search-input" type="search" placeholder="Search tools..." aria-label="Search tools" data-tool-path="" autocomplete="off">
+                </div>
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch theme"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button>
+                <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile">
+            <a href="index.html"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Tools</a>
+            <a href="../index.html#categories"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Categories</a>
+            <a href="../pages/about.html"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a>
+            <button class="theme-toggle" type="button"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> <span data-theme-label>System theme</span></button>
+        </nav>
+    </header>
+
+    <main class="tool-page">
+        <div class="container tool-container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <a href="index.html">Tools</a>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                <span aria-current="page">Unit Converter</span>
+            </nav>
+
+            <div class="tool-header">
+                <span class="tool-card-icon"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i></span>
+                <h1>Unit Converter</h1>
+                <p>Convert length, weight, temperature, data, time, speed, area and volume units.</p>
+            </div>
+
+            <div class="tool-card">
+                <div class="form-group">
+                    <label for="uc-category">Category</label>
+                    <select id="uc-category">
+                        <option value="length">Length</option>
+                        <option value="weight">Weight</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="data">Data</option>
+                        <option value="time">Time</option>
+                        <option value="speed">Speed</option>
+                        <option value="area">Area</option>
+                        <option value="volume">Volume</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="uc-value">Value</label>
+                    <input id="uc-value" class="mono" type="number" value="1" step="any">
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="uc-from">From</label>
+                        <select id="uc-from"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="uc-to">To</label>
+                        <select id="uc-to"></select>
+                    </div>
+                </div>
+                <div class="btn-row">
+                    <button class="btn btn-secondary" type="button" id="swap-btn"><i class="fa-solid fa-arrow-right-arrow-left" aria-hidden="true"></i> Swap</button>
+                    <button class="btn btn-secondary" type="button" id="copy-btn"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy Result</button>
+                </div>
+                <div class="form-group" style="margin-top:1rem;">
+                    <label>Result</label>
+                    <div class="mac-output" id="uc-result" aria-live="polite">—</div>
+                </div>
+            </div>
+            <section class="tool-about">
+                <h2>About this tool</h2>
+                <p>Everyday unit conversions across eight categories.</p>
+                <h3>How it works</h3>
+                <p>Linear units convert through a base unit with precise factors (for example 1 mile = 1609.344 m exactly). Temperature uses the proper offset formulas for Celsius, Fahrenheit and Kelvin. Results update live as you type.</p>
+            </section>
+
+
+            <section id="related-tools" class="related-tools" data-slug="unit-converter">
+                <h2>Related Tools</h2>
+                <div class="card-grid"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a class="brand" href="../index.html"><span class="brand-badge">T</span> TKJ Toolkit</a>
+                <p>Essential tools for networks, developers, and IT professionals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Tools</h3>
+                <a href="index.html?category=Networking">Networking</a>
+                <a href="index.html?category=Developer">Developer</a>
+                <a href="index.html?category=Generators">Generators</a>
+                <a href="index.html?category=Utilities">Utilities</a>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <a href="../pages/about.html">About</a>
+                <a href="../pages/privacy.html">Privacy</a>
+                <a href="../pages/terms.html">Terms</a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 TKJ Toolkit</p>
+        </div>
+    </footer>
+</body>
+</html>
